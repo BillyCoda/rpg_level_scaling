@@ -26,35 +26,81 @@
     <table>
         <caption>Character Level: {{ mainLevel }}</caption>
       <thead>
-        <th>Stat</th>
-        <th>Value</th>
+        <th>Stat Name</th>
+        <th>Value at Level</th>
       </thead>
       <tbody>
         <tr>
           <td>Strength -</td>
-          <td>{{ strStat }}</td>
+          <td>{{ statsRounded[0] }}</td>
         </tr>
         <tr>
           <td>Dexterity -</td>
-          <td>{{ dexStat }}</td>
+          <td>{{ statsRounded[1] }}</td>
         </tr>
         <tr>
           <td>Constitution -</td>
-          <td>{{ conStat }}</td>
+          <td>{{ statsRounded[2] }}</td>
         </tr>
         <tr>
           <td>Intelligence -</td>
-          <td>{{ intStat }}</td>
+          <td>{{ statsRounded[3] }}</td>
         </tr>
         <tr>
           <td>Wisdom -</td>
-          <td>{{ wisStat }}</td>
+          <td>{{ statsRounded[4] }}</td>
         </tr>
         <tr>
           <td>Charisma -</td>
-          <td>{{ chaStat }}</td>
+          <td>{{ statsRounded[5] }}</td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <hr />
+
+  <div class="contain-base-stat-change">
+    <table>
+        <caption>Base Stats</caption>
+      <thead>
+        <th>Stat Name</th>
+        <th>Base Value</th>
+        <th>Modify to</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Strength -</td>
+          <td>{{ baseStats[0] }}</td>
+          <td><input type="number" name="base-stat-input-1" id="bsi-1" /></td>
+        </tr>
+        <tr>
+          <td>Dexterity -</td>
+          <td>{{ baseStats[1] }}</td>
+          <td><input type="number" name="base-stat-input-2" id="bsi-2" /></td>
+        </tr>
+        <tr>
+          <td>Constitution -</td>
+          <td>{{ baseStats[2] }}</td>
+          <td><input type="number" name="base-stat-input-3" id="bsi-3" /></td>
+        </tr>
+        <tr>
+          <td>Intelligence -</td>
+          <td>{{ baseStats[3] }}</td>
+          <td><input type="number" name="base-stat-input-4" id="bsi-4" /></td>
+        </tr>
+        <tr>
+          <td>Wisdom -</td>
+          <td>{{ baseStats[4] }}</td>
+          <td><input type="number" name="base-stat-input-5" id="bsi-5" /></td>
+        </tr>
+        <tr>
+          <td>Charisma -</td>
+          <td>{{ baseStats[5] }}</td>
+          <td><input type="number" name="base-stat-input-6" id="bsi-6" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="button" value="Submit" (click)="changeBaseStats()">
   </div>
 </div>

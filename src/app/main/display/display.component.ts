@@ -7,24 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayComponent implements OnInit {
   mainLevel = 0;
-  strStat = 100;
-  dexStat = 100;
-  conStat = 100;
-  intStat = 100;
-  wisStat = 100;
-  chaStat = 100;
-  baseStrStat = 100;
-  baseDexStat = 100;
-  baseConStat = 100;
-  baseIntStat = 100;
-  baseWisStat = 100;
-  baseChaStat = 100;
-  strMod = 1.1;
-  dexMod = 1.1;
-  conMod = 1.1;
-  intMod = 1.1;
-  wisMod = 1.1;
-  chaMod = 1.1;
+  constant = [100, 100, 100, 100, 100, 100];
+  trueStats = [100, 100, 100, 100, 100, 100];
+  statsRounded = [100, 100, 100, 100, 100, 100];
+  baseStats = [100, 100, 100, 100, 100, 100];
+  baseStatModifiers = [1.1, 1.2, 1.1, 1.4, 1.01, 1.05];
 
   constructor() { }
 
@@ -34,7 +21,7 @@ export class DisplayComponent implements OnInit {
   changeMain(event: any) {
     const newLevel = event.target.value;
     if (newLevel < 1) {
-      this.resetStats();
+      this.resetShownStats();
     } else {
       const levelDifference = newLevel - this.mainLevel;
       this.statChange(levelDifference);
@@ -44,25 +31,33 @@ export class DisplayComponent implements OnInit {
 
   statChange(levelDiff: number) {
     if (levelDiff > 0) {
-    this.strStat = levelDiff * (this.strStat * this.strMod);
+      for (let i = 0; i < this.trueStats.length; i++) {
+        this.trueStats[i] = levelDiff * (this.trueStats[i] * this.baseStatModifiers[i]);
+        this.statsRounded[i] = Math.round(this.trueStats[i]);
+      }
     } else {
-      this.strStat = (levelDiff * -1) * (this.strStat / this.strMod)
+      for (let i = 0; i < this.trueStats.length; i++) {
+        this.trueStats[i] = (levelDiff * -1) * (this.trueStats[i] / this.baseStatModifiers[i]);
+        this.statsRounded[i] = Math.round(this.trueStats[i]);
+      }
     }
   }
 
-  resetStats() {
-    this.baseStrStat = 100;
-    this.baseDexStat = 100;
-    this.baseConStat = 100;
-    this.baseIntStat = 100;
-    this.baseWisStat = 100;
-    this.baseChaStat = 100;
-    this.strStat = 100;
-    this.dexStat = 100;
-    this.conStat = 100;
-    this.intStat = 100;
-    this.wisStat = 100;
-    this.chaStat = 100;
+  changeBaseStats() {
+    console.log('beep');
+    
   }
 
+  resetShownStats() {
+    this.trueStats = this.constant;
+    this.statsRounded = this.constant;
+  }
+
+  resetBaseStats() {
+    this.baseStats = this.constant;
+  }
+
+  resetBaseMods() {
+    this.baseStatModifiers = [1.1, 1.2, 1.1, 1.4, 1.01, 1.05];
+  }
 }

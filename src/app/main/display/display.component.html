@@ -10,14 +10,51 @@
     />
     <div class="main-label"></div>
   </div>
+
   <div class="main-input">
     <input
       type="number"
       name="number-input"
       id="number-input"
-      value="0"
       min="0"
       step="1"
+      (keyup)="changeMain($event)"
     />
+  </div>
+
+  <div class="main-stat-block">
+    <table>
+        <caption>Character Level: {{ mainLevel }}</caption>
+      <thead>
+        <th>Stat</th>
+        <th>Value</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Strength -</td>
+          <td>{{ strStat }}</td>
+        </tr>
+        <tr>
+          <td>Dexterity -</td>
+          <td>{{ dexStat }}</td>
+        </tr>
+        <tr>
+          <td>Constitution -</td>
+          <td>{{ conStat }}</td>
+        </tr>
+        <tr>
+          <td>Intelligence -</td>
+          <td>{{ intStat }}</td>
+        </tr>
+        <tr>
+          <td>Wisdom -</td>
+          <td>{{ wisStat }}</td>
+        </tr>
+        <tr>
+          <td>Charisma -</td>
+          <td>{{ chaStat }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

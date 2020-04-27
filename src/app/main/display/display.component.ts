@@ -45,7 +45,6 @@ export class DisplayComponent implements OnInit {
 
   changeBaseStats() {
     console.log('beep');
-    
   }
 
   resetShownStats() {
